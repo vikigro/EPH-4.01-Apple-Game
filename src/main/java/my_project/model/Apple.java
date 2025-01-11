@@ -21,12 +21,21 @@ public class Apple extends GraphicalObject {
         drawTool.drawFilledCircle(x,y,radius);
         drawTool.setCurrentColor(0,0,0,255);
         drawTool.drawCircle(x,y,radius);
+        System.out.println(x);
     }
 
     @Override
     public void update(double dt) {
         //TODO 01 Ein Apfel soll von oben herab fallen. Sobald er unten den Bildschirmrand berührt wird die Methode jumpBack() aufgerufen (siehe TODO 02).
+        y = y + speed * dt;
+        if (y >= 1000 + radius) {
+            jumpBack();
+        }
     }
 
     //TODO 02 Lege eine Methode jumpBack() an, die bei Aufruf das Apple-Objekt oben am oberen Bildschirmrand an einer zufälligen x-Position positioniert.
+    private void jumpBack() {
+        y = 0 - radius;
+        x = Math.random() * (1000 - 2 * radius) + radius;
+    }
 }
