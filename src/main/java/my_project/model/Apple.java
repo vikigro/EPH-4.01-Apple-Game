@@ -21,7 +21,6 @@ public class Apple extends GraphicalObject {
         drawTool.drawFilledCircle(x,y,radius);
         drawTool.setCurrentColor(0,0,0,255);
         drawTool.drawCircle(x,y,radius);
-        System.out.println(x);
     }
 
     @Override
