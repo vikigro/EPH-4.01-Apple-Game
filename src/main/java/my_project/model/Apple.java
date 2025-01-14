@@ -33,7 +33,7 @@ public class Apple extends GraphicalObject {
     }
 
     //TODO 02 Lege eine Methode jumpBack() an, die bei Aufruf das Apple-Objekt oben am oberen Bildschirmrand an einer zufälligen x-Position positioniert.
-    private void jumpBack() {
+    public void jumpBack() {
         y = 0 - radius;
         x = Math.random() * (1000 - 2 * radius) + radius;
     }
