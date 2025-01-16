@@ -71,6 +71,9 @@ public class ProgramController {
         if(checkAndHandleCollision(pear01)) {
             pear01.jumpBack();
         }
+        if(checkAndHandleCollision(traube01)) {
+            traube01.jumpBack();
+        }
     }
 
     //TODO 06 Fügen Sie eine Methode checkAndHandleCollision(Apple a) hinzu. Diese gibt true zurück, falls das Apple-Objekt mit dem Player-Objekt kollidiert. Nutzen Sie hierzu die collidesWith-Methode der Klasse GraphicalObject.
