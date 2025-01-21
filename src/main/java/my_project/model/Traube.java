@@ -3,10 +3,9 @@ package my_project.model;
 import KAGO_framework.model.GraphicalObject;
 import KAGO_framework.view.DrawTool;
 
-public class Traube extends GraphicalObject {
+public class Traube extends Fruit {
 
     //Attribute
-    private double speed;
 
     public Traube(double x, double y){
         this.x = x;
@@ -24,13 +23,6 @@ public class Traube extends GraphicalObject {
     }
 
     @Override
-    public void update(double dt) {
-        y = y + speed * dt;
-        if (y >= 1000 + radius) {
-            jumpBack();
-        }
-    }
-
     public void jumpBack() {
         y = 0 - radius;
         x = Math.random() * (1000 - 2 * radius) + radius;
