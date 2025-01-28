@@ -21,6 +21,10 @@ public class ProgramController {
     private ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
 
     private Apple apple01;
+    private Apple apple02;
+    private Apple apple03;
+    private Apple apple04;
+    private Apple apple05;
     private Pear pear01;
     private Traube traube01;
     private Player player01;
@@ -44,6 +48,10 @@ public class ProgramController {
         double xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
         double yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
         apple01 = new Apple(xPos, yPos);
+        apple02 = new Apple(xPos, yPos);
+        apple03 = new Apple(xPos, yPos);
+        apple04 = new Apple(xPos, yPos);
+        apple05 = new Apple(xPos, yPos);
         traube01 = new Traube(xPos, yPos);
         viewController.draw(apple01);
         viewController.draw(traube01);
@@ -68,6 +76,7 @@ public class ProgramController {
         if(checkAndHandleCollision(apple01)){
             apple01.jumpBack();
         }
+
         if(checkAndHandleCollision(pear01)) {
             pear01.jumpBack();
         }
