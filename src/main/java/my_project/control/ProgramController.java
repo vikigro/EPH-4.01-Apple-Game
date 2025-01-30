@@ -52,9 +52,11 @@ public class ProgramController {
         apple03 = new Apple(xPos, yPos);
         apple04 = new Apple(xPos, yPos);
         apple05 = new Apple(xPos, yPos);
-        traube01 = new Traube(xPos, yPos);
         viewController.draw(apple01);
-        viewController.draw(traube01);
+        viewController.draw(apple02);
+        viewController.draw(apple03);
+        viewController.draw(apple04);
+        viewController.draw(apple05);
 
         xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
         yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
@@ -64,6 +66,9 @@ public class ProgramController {
         player01 = new Player(50, Config.WINDOW_HEIGHT-100);
         viewController.draw(player01);
         viewController.register(player01);
+
+        traube01 = new Traube(xPos, yPos);
+        viewController.draw(traube01);
     }
 
     /**
@@ -75,6 +80,18 @@ public class ProgramController {
         //Weitere TODOs folgen und werden im Unterricht formuliert. Spätestens nach TODO 08 sollte der Aufbau des Projekts durchdacht werden.
         if(checkAndHandleCollision(apple01)){
             apple01.jumpBack();
+        }
+        if(checkAndHandleCollision(apple02)){
+            apple02.jumpBack();
+        }
+        if(checkAndHandleCollision(apple03)){
+            apple03.jumpBack();
+        }
+        if(checkAndHandleCollision(apple04)){
+            apple04.jumpBack();
+        }
+        if(checkAndHandleCollision(apple05)){
+            apple05.jumpBack();
         }
 
         if(checkAndHandleCollision(pear01)) {
