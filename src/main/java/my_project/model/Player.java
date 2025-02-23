@@ -42,10 +42,10 @@ public class Player extends InteractiveGraphicalObject {
         //TODO 05 Überarbeiten Sie die Update-Methode derart, dass ein Player-Objekt nicht den Bildschirm verlassen kann und immer zu sehen ist.
 //        if(x > 1 && x < 1000 - width) {
             if (direction == 0 && x < 980 - width) {
-                x = x + speed * dt;
+                x += speed * dt;
             }
             if (direction == 2 && x > 5) {
-                x = x - speed * dt;
+                x -= speed * dt;
             }
             System.out.println(x);
 //        }
@@ -68,6 +68,16 @@ public class Player extends InteractiveGraphicalObject {
         }
         if(key == keyToGoRight){
             direction = -1;
+        }
+    }
+
+    public void setSpeed(double speed){
+        this.speed = speed;
+    }
+    public void moodifySpeed(double speedFactor){
+        this.speed *= speedFactor;
+        if (speed <= 0.1) {
+            speed = 0.1;
         }
     }
 }

@@ -6,15 +6,19 @@ import KAGO_framework.view.DrawTool;
 public class Pear extends Fruit {
 
     //Attribute
-    private boolean nachRechts;
+    private double speedX;
+    private byte direction;
+
 
     public Pear(double x, double y){
         this.x = x;
         this.y = y;
+
         speed = 150;
+        speedX = 1500;
         width = 25;
         height = 35;
-        nachRechts = false;
+        direction = 1;
     }
 
     @Override
@@ -27,17 +31,19 @@ public class Pear extends Fruit {
 
     public void update(double dt) {
         super.update(dt);
-        if(nachRechts){
-            x = x + speed*dt;
+        if(direction == 1){
+
             if(x >= 1000){
-                nachRechts = false;
+                direction = -1;
             }
-        } else {
-            x = x - speed * dt;
+        } else if(direction == -1) {
+
             if (x <= 0) {
-                nachRechts = true;
+                direction = 1;
             }
         }
+        x = x + direction * speedX*dt;
+        System.out.println(x);
     }
 
     //TODO 04 Lege eine Methode jumpBack() an, die bei Aufruf das Pear-Objekt oben am oberen Bildschirmrand an einer zufälligen x-Position positioniert.
