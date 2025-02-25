@@ -21,8 +21,9 @@ public class ProgramController {
     private Apple apple02;
     private Apple apple03;
     private Apple apple04;
-    private Apple apple05;
+    //private Apple apple05;
     private PowerApple powerApple01;
+    private BadApple badApple01;
     private Pear pear01;
     private Traube traube01;
     private Player player01;
@@ -55,18 +56,22 @@ public class ProgramController {
         xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
         yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
         apple04 = new Apple(xPos, yPos);
-        xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
-        yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
-        apple05 = new Apple(xPos, yPos);
+        //xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
+        //yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
+        //apple05 = new Apple(xPos, yPos);
         xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
         yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
         powerApple01 = new PowerApple(xPos, yPos);
+        xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
+        yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
+        badApple01 = new BadApple(xPos, yPos);
         viewController.draw(apple01);
         viewController.draw(apple02);
         viewController.draw(apple03);
         viewController.draw(apple04);
-        viewController.draw(apple05);
+        //viewController.draw(apple05);
         viewController.draw(powerApple01);
+        viewController.draw(badApple01);
 
         xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
         yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
@@ -83,8 +88,9 @@ public class ProgramController {
         apple02.addPlayerToCollisionDetection(player01);
         apple03.addPlayerToCollisionDetection(player01);
         apple04.addPlayerToCollisionDetection(player01);
-        apple05.addPlayerToCollisionDetection(player01);
+        //apple05.addPlayerToCollisionDetection(player01);
         powerApple01.addPlayerToCollisionDetection(player01);
+        badApple01.addPlayerToCollisionDetection(player01);
         pear01.addPlayerToCollisionDetection(player01);
         traube01.addPlayerToCollisionDetection(player01);
 

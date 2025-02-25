@@ -47,7 +47,6 @@ public class Player extends InteractiveGraphicalObject {
             if (direction == 2 && x > 5) {
                 x -= speed * dt;
             }
-            System.out.println(x);
 //        }
     }
 

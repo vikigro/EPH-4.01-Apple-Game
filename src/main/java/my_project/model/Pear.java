@@ -43,7 +43,7 @@ public class Pear extends Fruit {
             }
         }
         x = x + direction * speedX*dt;
-        System.out.println(x);
+
     }
 
     //TODO 04 Lege eine Methode jumpBack() an, die bei Aufruf das Pear-Objekt oben am oberen Bildschirmrand an einer zufälligen x-Position positioniert.

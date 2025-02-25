@@ -22,17 +22,24 @@ public abstract class Fruit extends GraphicalObject {
         jumpBack();
     }
     public void addPlayerToCollisionDetection(Player player) {
-        for (int i = 0; i < playersToCollideWith.length; i++) {
-            if (playersToCollideWith[i] == null) {
+        int i = 0;
+        for (Player potentialPlayer : playersToCollideWith) { //geht die ganze liste durch (wie ipairs in lua)
+            if (potentialPlayer == null) {
                 playersToCollideWith[i] = player;
+                System.out.println("found free slot");
+                break; // stoppt den gesamten for-loop
+
             }
+            i++;
         }
     }
     private void handlePlayerCollisions(){
-        for (int i = 0; i < playersToCollideWith.length; i++) {
-            if (playersToCollideWith[i] != null) {
-                if (playersToCollideWith[i].collidesWith(this)){
-                    hitPlayer(playersToCollideWith[i]);
+        for (Player playerToCollideWith: playersToCollideWith) {
+            if (playerToCollideWith != null) { // " != " ist "ungleich"
+                System.out.println("found player");
+                if (playerToCollideWith.collidesWith(this)){
+                    System.out.println("found collision");
+                    hitPlayer(playerToCollideWith);
                 }
             }
         }
