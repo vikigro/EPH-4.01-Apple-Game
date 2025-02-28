@@ -17,20 +17,21 @@ public class Player extends InteractiveGraphicalObject {
     private int keyToGoRight;
     private int direction;
 
-    public Player(double x, double y){
+    public Player(double x, double y, int keyToGoLeft, int keyToGoRight) {
         this.x = x;
         this.y = y;
         speed = 150;
         width = 80;
         height = 40;
 
-        this.keyToGoLeft    = KeyEvent.VK_A;
-        this.keyToGoRight   = KeyEvent.VK_D;
+        this.keyToGoLeft    = keyToGoLeft;
+        this.keyToGoRight   = keyToGoRight;
         this.direction      = -1; //-1 keine Bewegung, 0 nach rechts, 2 nach links
     }
 
     @Override
     public void draw(DrawTool drawTool) {
+        if (keyToGoLeft == KeyEvent.VK_A) { drawTool.setCurrentColor(157,152,3,255); }
         drawTool.setCurrentColor(157,152,3,255);
         drawTool.drawFilledRectangle(x,y,width,height);
         drawTool.setCurrentColor(0,0,0,255);

@@ -26,7 +26,7 @@ public abstract class Fruit extends GraphicalObject {
         for (Player potentialPlayer : playersToCollideWith) { //geht die ganze liste durch (wie ipairs in lua)
             if (potentialPlayer == null) {
                 playersToCollideWith[i] = player;
-                System.out.println("found free slot");
+                System.out.println("found free slot: " + i);
                 break; // stoppt den gesamten for-loop
 
             }

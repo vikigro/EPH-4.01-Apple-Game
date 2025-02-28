@@ -5,6 +5,8 @@ import KAGO_framework.model.GraphicalObject;
 import my_project.Config;
 import my_project.model.*;
 
+import java.awt.event.KeyEvent;
+
 /**
  * Ein Objekt der Klasse ProgramController dient dazu das Programm zu steuern. Die updateProgram - Methode wird
  * mit jeder Frame im laufenden Programm aufgerufen.
@@ -27,6 +29,7 @@ public class ProgramController {
     private Pear pear01;
     private Traube traube01;
     private Player player01;
+    private Player player02;
 
     /**
      * Konstruktor
@@ -78,9 +81,12 @@ public class ProgramController {
         pear01 = new Pear(xPos, yPos);
         viewController.draw(pear01);
 
-        player01 = new Player(50, Config.WINDOW_HEIGHT-100);
+        player01 = new Player(50, Config.WINDOW_HEIGHT-100, KeyEvent.VK_A, KeyEvent.VK_D);
+        player02 = new Player(50, Config.WINDOW_HEIGHT-100, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT);
         viewController.draw(player01);
+        viewController.draw(player02);
         viewController.register(player01);
+        viewController.register(player02);
 
         traube01 = new Traube(xPos, yPos);
         viewController.draw(traube01);
@@ -93,6 +99,15 @@ public class ProgramController {
         badApple01.addPlayerToCollisionDetection(player01);
         pear01.addPlayerToCollisionDetection(player01);
         traube01.addPlayerToCollisionDetection(player01);
+        apple01.addPlayerToCollisionDetection(player02);
+        apple02.addPlayerToCollisionDetection(player02);
+        apple03.addPlayerToCollisionDetection(player02);
+        apple04.addPlayerToCollisionDetection(player02);
+        //apple05.addPlayerToCollisionDetection(player02);
+        powerApple01.addPlayerToCollisionDetection(player02);
+        badApple01.addPlayerToCollisionDetection(player02);
+        pear01.addPlayerToCollisionDetection(player02);
+        traube01.addPlayerToCollisionDetection(player02);
 
     }
 
