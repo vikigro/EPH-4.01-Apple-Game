@@ -36,7 +36,7 @@ public abstract class Fruit extends GraphicalObject {
     private void handlePlayerCollisions(){
         for (Player playerToCollideWith: playersToCollideWith) {
             if (playerToCollideWith != null) { // " != " ist "ungleich"
-                System.out.println("found player");
+                //System.out.println("found player");
                 if (playerToCollideWith.collidesWith(this)){
                     System.out.println("found collision");
                     hitPlayer(playerToCollideWith);

@@ -1,7 +1,6 @@
 package my_project.control;
 
 import KAGO_framework.control.ViewController;
-import KAGO_framework.model.GraphicalObject;
 import my_project.Config;
 import my_project.model.*;
 
@@ -19,17 +18,10 @@ public class ProgramController {
     // Referenzen
     private ViewController viewController;  // diese Referenz soll auf ein Objekt der Klasse viewController zeigen. Über dieses Objekt wird das Fenster gesteuert.
 
-    private Apple apple01;
-    private Apple apple02;
-    private Apple apple03;
-    private Apple apple04;
-    //private Apple apple05;
-    private PowerApple powerApple01;
-    private BadApple badApple01;
-    private Pear pear01;
-    private Traube traube01;
+    private Fruit[] fruits;
     private Player player01;
     private Player player02;
+    private Background background;
 
     /**
      * Konstruktor
@@ -47,67 +39,43 @@ public class ProgramController {
      * Sie erstellt die leeren Datenstrukturen, zu Beginn nur eine Queue
      */
     public void startProgram() {
-        double xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
-        double yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
-        apple01 = new Apple(xPos, yPos);
-        xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
-        yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
-        apple02 = new Apple(xPos, yPos);
-        xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
-        yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
-        apple03 = new Apple(xPos, yPos);
-        xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
-        yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
-        apple04 = new Apple(xPos, yPos);
-        //xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
-        //yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
-        //apple05 = new Apple(xPos, yPos);
-        xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
-        yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
-        powerApple01 = new PowerApple(xPos, yPos);
-        xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
-        yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
-        badApple01 = new BadApple(xPos, yPos);
-        viewController.draw(apple01);
-        viewController.draw(apple02);
-        viewController.draw(apple03);
-        viewController.draw(apple04);
-        //viewController.draw(apple05);
-        viewController.draw(powerApple01);
-        viewController.draw(badApple01);
-
-        xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
-        yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
-        pear01 = new Pear(xPos, yPos);
-        viewController.draw(pear01);
-
+        background = new Background();
+        viewController.draw(background);
         player01 = new Player(50, Config.WINDOW_HEIGHT-100, KeyEvent.VK_A, KeyEvent.VK_D);
         player02 = new Player(50, Config.WINDOW_HEIGHT-100, KeyEvent.VK_LEFT, KeyEvent.VK_RIGHT);
         viewController.draw(player01);
         viewController.draw(player02);
         viewController.register(player01);
         viewController.register(player02);
+        System.out.println("finished creating players");
 
-        traube01 = new Traube(xPos, yPos);
-        viewController.draw(traube01);
-        apple01.addPlayerToCollisionDetection(player01);
-        apple02.addPlayerToCollisionDetection(player01);
-        apple03.addPlayerToCollisionDetection(player01);
-        apple04.addPlayerToCollisionDetection(player01);
-        //apple05.addPlayerToCollisionDetection(player01);
-        powerApple01.addPlayerToCollisionDetection(player01);
-        badApple01.addPlayerToCollisionDetection(player01);
-        pear01.addPlayerToCollisionDetection(player01);
-        traube01.addPlayerToCollisionDetection(player01);
-        apple01.addPlayerToCollisionDetection(player02);
-        apple02.addPlayerToCollisionDetection(player02);
-        apple03.addPlayerToCollisionDetection(player02);
-        apple04.addPlayerToCollisionDetection(player02);
-        //apple05.addPlayerToCollisionDetection(player02);
-        powerApple01.addPlayerToCollisionDetection(player02);
-        badApple01.addPlayerToCollisionDetection(player02);
-        pear01.addPlayerToCollisionDetection(player02);
-        traube01.addPlayerToCollisionDetection(player02);
+        int appleAmount = 4;
+        int powerAppleAmount = 1;
+        int badAppleAmount = 1;
+        int pearAmount = 1;
+        int traubeAmount = 1;
+
+        fruits = new Fruit[appleAmount + powerAppleAmount + badAppleAmount + pearAmount + traubeAmount];
+        for(int i = 0; i < fruits.length; i++){
+            double xPos = Math.random()*(Config.WINDOW_WIDTH-50) + 50;
+            double yPos = Math.random()*(Config.WINDOW_HEIGHT-50) + 50;
+            if(i < appleAmount) {
+                fruits[i] = new Apple(xPos, yPos);
+            }else if(i < appleAmount + powerAppleAmount) {
+                fruits[i] = new PowerApple(xPos, yPos);
+            }else if(i < appleAmount + powerAppleAmount + badAppleAmount) {
+                fruits[i] = new BadApple(xPos, yPos);
+            }else if(i < appleAmount + powerAppleAmount + badAppleAmount + pearAmount) {
+                fruits[i] = new Pear(xPos, yPos);
+            }else if(i < appleAmount + powerAppleAmount + badAppleAmount + pearAmount + traubeAmount) {
+                fruits[i] = new Traube(xPos, yPos);
+            }
+            viewController.draw(fruits[i]);
+            fruits[i].addPlayerToCollisionDetection(player01);
+            fruits[i].addPlayerToCollisionDetection(player02);
+        }
+        System.out.println("finished creating fruits");
+
 
     }
 
